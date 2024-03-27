@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <style>
+        table {
+        border-collapse: collapse;
+      }
+        td {
+        border: 1px solid black;
+        font-size: 3rem;
+      }
+      p {
+            font-size: 4rem;
+        }
+    </style>
+    <title>JS Demo</title>
+    <script src="jquery/dist/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("table td").click(function(){
+            var cellValue = $(this).text();
+            $("p").css({"background-color":cellValue})
+        })
+        $("select").click(function(){
+            var cellValue = $(this).find("option:selected").text();
+            $("p").css({"background-color":cellValue})
+        })
+    });
+      
+    </script>
+  </head>
+  <body>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    red
+                </td>
+                <td>
+                    green
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    blue
+                </td>
+                <td>
+                    yellow
+                </td>
+            </tr>
+        </tbody>
+      </table>
+      <select name="" id="">
+        <option value="red">red</option>
+        <option value="green">green</option>
+        <option value="blue">blue</option>
+        <option value="yellow">yellow</option>
+      </select>  
+      <p>color</p>
+  </body>
+</html>

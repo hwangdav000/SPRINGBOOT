@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <title>JS Demo</title>
+    <script src="jquery/dist/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        var ttext = $('p').text();
+        var ctext = $('.header').text();
+        var idtext = $('#user3').text();
+        $('#btn1').click(function () {
+          alert('tag text: ' + ttext);
+        });
+        $('#btn2').click(function () {
+          alert('class text: ' + ctext);
+        });
+        $('#btn3').click(function () {
+          alert('id text: ' + idtext);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <p>user 1</p>
+    <h1 class="header">user 2</h1>
+    <h2 id="user3">user 3</h2>
+    <input
+      type="button"
+      id="btn1"
+      value="Tag"
+    />
+    <input
+      type="button"
+      id="btn2"
+      value="Class"
+    />
+    <input
+      type="button"
+      id="btn3"
+      value="Id"
+    />
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <style>
+        p {
+            background-color: blue;
+            font-size: 4rem;
+        }
+    </style>
+    <title>JS Demo</title>
+    <script src="jquery/dist/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        
+        // $('#show').click(function () {
+        //   $("p").show()
+        // });
+        // $('#hide').click(function () {
+        //   $("p").hide()
+        // });
+        // $('#green').click(function () {
+        //   $("p").css({"background-color":"green"})
+        // });
+        //can do this with one event handler
+        $("input[type]").click(function() {
+        if ($(this).val() == "SHOW") {
+            $("p").show()
+        }
+        else if ($(this).val() == "HIDE") {
+            $("p").hide()
+        } else {
+            $("p").css({"background-color":"green"})
+        }
+        })  
+    });
+      
+    </script>
+  </head>
+  <p>Hide & Seek Game</p>
+  <input type="button" id="show" value="SHOW" />
+  <input type="button" id="hide" value="HIDE" />
+  <input type="button" id="green" value="GREEN" />
+</html>

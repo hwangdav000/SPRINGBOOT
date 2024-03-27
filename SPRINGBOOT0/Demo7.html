@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <title>JS Demo</title>
+    <style>
+      table {
+      border-collapse: collapse;
+      width: 30%;
+      }
+      th, td {
+        padding: 8px;
+        text-align: left;
+        border: 1px solid #ddd;
+      }
+      th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+      }
+    </style>
+    <script src="jquery/dist/jquery.min.js"></script>
+    <script>
+      $(Document).ready(function() {
+        $("#ADD").click(function() {
+          $("table").append(
+            "<tr><td class='nametd'>" + $("#name").val() + 
+            "</td><td class='agetd'>" + $("#age").val() + 
+            "</td><td class='countrytd'>" + $("#country").val() + 
+            "</td><td><a href='#' class='remove'>Remove</a></td><td><a href='#' class='view'>View</a></td></tr>");
+        })
+        // trying to handle event that is dynamically added need to use on function
+        // $(".remove").click(function() {
+        //   $(this).parent().parent().remove()
+        // })
+        // for dynamically added control need to use on
+        $("table").on("click", ".remove", function () {
+          // handling cilck event of anchor tag
+          $(this).parent().parent().remove()
+        })
+        $("table").on("click", ".view", function () {
+            // get corresponding data to row
+            var nameValue = ($(this).closest("tr").find(".nametd").text());
+            var ageValue = ($(this).closest("tr").find(".agetd").text());
+            var countryValue = ($(this).closest("tr").find(".countrytd").text());
+
+            $("#name").val(nameValue);
+            $("#age").val(ageValue);
+            $("#country").val(countryValue);
+        });
+      });
+    </script>
+    Enter Name: <input type="text" id="name"><br>
+    Enter Age: <input type="text" id="age"><br>
+    Enter Country: <input type="text" id="country"><br>
+    <input type="button" id="ADD" value="Add"><br>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Country</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </table>
+</html>

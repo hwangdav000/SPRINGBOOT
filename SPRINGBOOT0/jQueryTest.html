@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <title>JS Demo</title>
+    <script src="jquery/dist/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        // tag
+        var ptext = $('p').text().split(': ')[1];
+        // class
+        var htext = $('.header').text().split(': ')[1];
+        // id
+        $('#btn1').click(function () {
+          alert('p tag: ' + ptext);
+          alert('header: ' + htext);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <p>user: David Hwang</p>
+    <h1 class="header">user: David Hwang</h1>
+    <input
+      type="button"
+      id="btn1"
+      value="HIT ME"
+    />
+  </body>
+</html>

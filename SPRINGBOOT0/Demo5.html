@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>JS Demo</title>
+    <script src="jquery/dist/jquery.min.js"></script>
+    <script>
+      $(Document).ready(function() {
+        //alert($("p").text())
+        // alert($("p").html())
+
+        $("#btnprep").click(function() {
+          $("ul").prepend("<li>"+ $("#cnt").val() + "</li>")
+        })
+        $("#btnappend").click(function() {
+          $("ul").append("<li>"+ $("#cnt").val() + "</li>")
+        })
+
+
+      });
+    </script>
+    <p> Capital of India is <a href="#">New Delhi</a>
+    </p>
+    <ul>
+      <li>US</li>
+      <li>Russia</li>
+      <li >UK</li>
+      <li>China</li>
+      <li>India</li>
+    </ul>
+    Enter Country: <input type="text" id="cnt"><br>
+      <input type="button" id="btnprep" value="Prepend"><br>
+      <input type="button" id="btnappend" value="Append">
+</html>

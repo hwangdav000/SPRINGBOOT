@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <title>JS Demo</title>
+    <script src="jquery/dist/jquery.min.js"></script>
+    <script>
+      $(Document).ready(function() {
+        $("#ADD").click(function() {
+          $("table").append(
+            "<tr><td>" + 
+              $("#name").val() + 
+              "</td><td>" + 
+                $("#age").val() + 
+                "</td><td>" + 
+                  $("#country").val() + 
+                  "</td><td><a href='#' class='remove'>Remove</a></td></tr>");
+        })
+        // trying to handle event that is dynamically added need to use on function
+        // $(".remove").click(function() {
+        //   $(this).parent().parent().remove()
+        // })
+        // for dynamically added control need to use on
+        $("table").on("click", ".remove", function () {
+          // handling cilck event of anchor tag
+          $(this).parent().parent().remove()
+        })
+      });
+    </script>
+    Enter Name: <input type="text" id="name"><br>
+    Enter Age: <input type="text" id="age"><br>
+    Enter Country: <input type="text" id="country"><br>
+    <input type="button" id="ADD" value="Add"><br>
+    <table border="1">
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Country</th>
+        <th></th>
+      </tr>
+    </table>
+</html>
