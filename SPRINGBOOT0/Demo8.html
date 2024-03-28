@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red{background-color:red}
+        .green{background-color:green}
+        .yellow{background-color:yellow}
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".red").click(function() {
+                $("#sample").addClass("red");
+            });
+            $(".green").click(function() {
+                $("#sample").addClass("green");
+            });
+            $(".yellow").click(function() {
+                $("#sample").addClass("yellow");
+            });
+            $(".remove").click(function() {
+                $("#sample").removeClass($("#sample").val());
+            });
+            $(".toggle").click(function() {
+                $("#sample").toggleClass($("#sample").val());
+            });
+        });
+    </script>
+</head>
+<body>
+    <input type="text" id="sample">
+    <input type="button" class="red" value="RED">
+    <input type="button" class="green" value="GREEN">
+    <input type="button" class="yellow" value="YELLOW">
+    <input type="button" class="remove" value="REMOVE">
+    <input type="button" class="toggle" value="TOGGLE">
+</body>
+</html>

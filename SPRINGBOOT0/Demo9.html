@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 30%;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        .green{background-color:green}
+        .red{background-color:red}
+        .blue{background-color:blue}
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#ADD").click(function() {
+                $("table").append(
+                "<tr><td class='nametd'>" + $("#name").val() + 
+                "</td><td class='agetd'>" + $("#age").val() + 
+                "</td><td><input type='checkbox' class='checkbox'></td></tr>");
+            });
+
+            $("table td").click(function(){
+                var cellValue = $(this).text();
+                $("p").css({"background-color":cellValue})
+            })
+
+
+            $("#APPLY").click(function(){
+                var colorValue = $("#SELECT option:selected").text();
+
+                $("tr").each(function() {
+                    var checkBox = $(this).find(".checkbox");
+           
+                    if (checkBox.prop("checked")) {
+                        
+                        $(this).removeClass();
+                        $(this).addClass(colorValue);
+                    }  
+                });
+            })
+
+            $("#checkbox2").change(function() {
+                $(".checkbox").prop('checked', $(this).prop('checked'))
+            })
+        });
+    </script>
+</head>
+<body>
+    <table>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th><input type='checkbox' id='checkbox2'></th>
+        </tr>
+    </table>
+
+    <select id="SELECT">
+        <option value="red">red</option>
+        <option value="green">green</option>
+        <option value="blue">blue</option>
+        <option value="yellow">yellow</option>
+    </select>
+    <input type="button" id="APPLY" value="APPLY">
+    <h1>Adding to Table</h1>
+    Enter Name: <input type="text" id="name"><br>
+    Enter Age: <input type="text" id="age"><br>
+    <input type="button" id="ADD" value="ADD"><br>
+</body>
+</html>
