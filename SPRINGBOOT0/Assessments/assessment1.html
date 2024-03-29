@@ -22,7 +22,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
-            $(".ADD").click(function() {
+            function addHandler() {
                 $("table").append(
                 "<tr><td class='nametd'>" + $("#Name").val() + 
                 "</td><td class='captd'>" + $("#Capital").val() +
@@ -30,10 +30,8 @@
                 "</td><td><a href='#' class='remove'>Remove</a>" + 
                 "</td><td><a href='#' class='edit'>Edit</a></td></tr>"
                 );
-            }); 
-
-            // edit button implementation
-            $(".EDITBUTTON").click(function() {
+            }
+            function editHandler() {
                 var name = $("#Name").val();
                 var capital = $("#Capital").val();
                 var currency = $("#Currency").val();
@@ -51,14 +49,12 @@
                 })
 
                 // change Button1 back to Add again
-                // $("#button1").removeClass("EDIT").addClass("ADD").val("Add");
-                $("#button1").show();
-                $("#button2").hide();
+                $("#button1").removeClass("EDIT").addClass("ADD").val("Add").off("click").click(addHandler);
 
                 // remove name to be editable
                 $("#Name").prop("readonly", false);
-
-            })
+            }
+            $("#button1").click(addHandler);
 
             $("table").on("click", ".remove", function () {
                 // handling cilck event of anchor tag
@@ -79,9 +75,7 @@
                 $("#Name").prop("readonly", true);
 
                 // change add button to edit button
-                // $("#button1").removeClass("ADD").addClass("EDITBUTTON").val("Edit");
-                $("#button1").hide();
-                $("#button2").show();
+                $("#button1").removeClass("ADD").addClass("EDITBUTTON").val("Edit").off("click").click(editHandler)
             });
         })
     </script>
