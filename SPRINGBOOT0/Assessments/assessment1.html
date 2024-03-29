@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 30%;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".ADD").click(function() {
+                $("table").append(
+                "<tr><td class='nametd'>" + $("#Name").val() + 
+                "</td><td class='captd'>" + $("#Capital").val() +
+                "</td><td class='curtd'>" + $("#Currency").val() +  
+                "</td><td><a href='#' class='remove'>Remove</a>" + 
+                "</td><td><a href='#' class='edit'>Edit</a></td></tr>"
+                );
+            }); 
+
+            // edit button implementation
+            $(".EDITBUTTON").click(function() {
+                var name = $("#Name").val();
+                var capital = $("#Capital").val();
+                var currency = $("#Currency").val();
+
+                // change the corresponding row to name to match the edit
+                $("tr").each(function() {
+                    console.log("in tr")
+                    var checkName = $(this).find(".nametd").text();
+                    console.log("checkname", checkName)
+                    if (checkName == name) {
+      
+                        $(this).find(".captd").text(capital)
+                        $(this).find(".curtd").text(currency)
+                    }
+                })
+
+                // change Button1 back to Add again
+                // $("#button1").removeClass("EDIT").addClass("ADD").val("Add");
+                $("#button1").show();
+                $("#button2").hide();
+
+                // remove name to be editable
+                $("#Name").prop("readonly", false);
+
+            })
+
+            $("table").on("click", ".remove", function () {
+                // handling cilck event of anchor tag
+                $(this).parent().parent().remove()
+            })
+
+            $("table").on("click", ".edit", function () {
+                // get corresponding data
+                var nameValue = ($(this).closest("tr").find(".nametd").text());
+                var capValue = ($(this).closest("tr").find(".captd").text());
+                var currValue = ($(this).closest("tr").find(".curtd").text());
+
+                $("#Name").val(nameValue);
+                $("#Capital").val(capValue);
+                $("#Currency").val(currValue);
+
+                // set name to non-editable
+                $("#Name").prop("readonly", true);
+
+                // change add button to edit button
+                // $("#button1").removeClass("ADD").addClass("EDITBUTTON").val("Edit");
+                $("#button1").hide();
+                $("#button2").show();
+            });
+        })
+    </script>
+</head>
+<body>
+    
+    Enter Name: <input type="text" id="Name"><br>
+    Enter Capital: <input type="text" id="Capital"><br>
+    Enter Currency: <input type="text" id="Currency"><br>
+    <input type="button" id="button1" class="ADD" value="Add">
+    <input type="button" id="button2" class="EDITBUTTON" style="display: none;" value="Edit">
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Capital</th>
+            <th>Currency</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </table>
+
+</body>
+</html>
